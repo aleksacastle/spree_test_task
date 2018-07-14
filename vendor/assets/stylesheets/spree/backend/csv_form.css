@@ -1,0 +1,11 @@
+#form_csv {
+  width: 20vw;
+}
+#form_csv_file {
+  float: left;
+  width: 60%;
+}
+#form_csv_button {
+  float: right;
+  width: 40%;
+}
