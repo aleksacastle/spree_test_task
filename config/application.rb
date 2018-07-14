@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require "rails"
+require 'csv'
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -18,7 +19,7 @@ Bundler.require(*Rails.groups)
 
 module SpreeTestTask
   class Application < Rails::Application
-    
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|

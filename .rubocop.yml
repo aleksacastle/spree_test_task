@@ -1,0 +1,6 @@
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/LineLength:
+  Max: 125
+  IgnoredPatterns: [\A\s*#]
