@@ -331,6 +331,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    smarter_csv (1.2.3)
     spree (3.4.1)
       spree_api (= 3.4.1)
       spree_backend (= 3.4.1)
@@ -473,6 +474,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov
+  smarter_csv
   spree (~> 3.4.0)
   spree_auth_devise (~> 3.3)
   spree_gateway (~> 3.3)

@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require "rails"
 require 'csv'
+require "smarter_csv"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
