@@ -1,6 +1,10 @@
 Spree::Admin::ProductsController.class_eval do
   def import
     Spree::Product.import(params[:file])
-    redirect_to '/admin/products', notice: 'File was imported sucessfully'
+    unless params[:file].nil?
+      redirect_to '/admin/products', notice: 'File was imported sucessfully'
+    else
+      redirect_to '/admin/products', notice: 'Please choose file'
+    end
   end
 end
