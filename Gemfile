@@ -41,6 +41,28 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :test do
+  gem 'capybara', '~> 2.16'
+  gem 'capybara-screenshot', '~> 1.0'
+  gem 'database_cleaner', '~> 1.3'
+  gem 'email_spec'
+  gem 'factory_bot_rails', '~> 4.8'
+  gem 'launchy'
+  gem 'rspec-activemodel-mocks', '~> 1.0'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-its'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'rspec-retry'
+  gem 'rspec_junit_formatter'
+  gem 'jsonapi-rspec'
+  gem 'simplecov'
+  gem 'webmock', '~> 3.0.1'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'timecop'
+  gem 'rails-controller-testing'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
