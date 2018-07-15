@@ -1,16 +1,19 @@
+# TBD: transfer to background job
+# fix validation slug error
 Spree::Product.class_eval do
   def self.import(file)
     unless file.nil?
-      CSV.foreach(file.path, headers: true, col_sep: ';') do |row|
-        hash = row.to_hash
-        product = Spree::Product.find_by_name(hash['name'])
+      options = {:value_converters => { :price => DecimalConverter }, :col_sep=>";", chunk_size: 1000}
+      data = SmarterCSV.process(file.path, options)
+      data.each do |row|
+        product = Spree::Product.find_by_name(row[:name])
         unless product.nil?
           product_params = {
-            "name": hash['name'],
-            "description": hash['description'],
-            "price": string_to_decimal(hash['price']),
+            "name": row[:name],
+            "description": row[:description],
+            "price": row[:price],
             "shipping_category": Spree::ShippingCategory.where("name": 'Default').first,
-            "slug": hash['slag']
+            "slug": row[:slug]
           }
           Spree::Product.create!(product_params)
         end
@@ -18,8 +21,10 @@ Spree::Product.class_eval do
     end
   end
 
-  def self.string_to_decimal(string)
-    price_csv_comma = string.gsub(/[.,]/, '.' => '', ',' => '.')
-    BigDecimal(price_csv_comma)
+  class DecimalConverter
+    def self.convert(string)
+      price_csv_comma = string.gsub(/[.,]/, '.' => '', ',' => '.')
+      BigDecimal(price_csv_comma)
+    end
   end
 end
